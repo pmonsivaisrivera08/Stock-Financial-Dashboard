@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Financial Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0e1117 0%, #262730 100%);
+            color: #fafafa;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .logo {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00ff88, #00cc6a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            margin-bottom: 2rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: rgba(38, 39, 48, 0.8);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 255, 136, 0.5);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #00ff88;
+        }
+
+        .feature-description {
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        .demo-section {
+            background: rgba(38, 39, 48, 0.5);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .demo-iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 8px;
+            background: #0e1117;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #00ff88, #00cc6a);
+            color: #0e1117;
+            font-weight: bold;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #00ff88;
+            border: 2px solid #00ff88;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+        }
+
+        .tech-stack {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .tech-badge {
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #00ff88;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #888;
+        }
+
+        .code-snippet {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .code-snippet code {
+            color: #00ff88;
+            font-family: 'Courier New', monospace;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">📈</div>
+            <h1>Stock Financial Dashboard</h1>
+            <p class="subtitle">Dashboard interactivo para análisis de datos financieros de acciones</p>
+        </header>
+
+        <section class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3 class="feature-title">Búsqueda de Acciones</h3>
+                <p class="feature-description">Ingresa cualquier símbolo bursátil (AAPL, GOOGL, MSFT) y obtén datos en tiempo real de Yahoo Finance.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3 class="feature-title">Gráficos Interactivos</h3>
+                <p class="feature-description">Visualiza precios con gráficos de líneas y velas japonesas, incluyendo promedios móviles y análisis técnico.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📋</div>
+                <h3 class="feature-title">Métricas Financieras</h3>
+                <p class="feature-description">Accede a ratios P/E, capitalización de mercado, beta, dividendos y más de 20 métricas financieras clave.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📥</div>
+                <h3 class="feature-title">Exportación CSV</h3>
+                <p class="feature-description">Descarga todos los datos históricos y métricas en formato CSV para análisis adicional.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <h3 class="feature-title">Análisis de Volumen</h3>
+                <p class="feature-description">Visualiza el volumen de trading con indicadores de color basados en el movimiento de precios.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🌙</div>
+                <h3 class="feature-title">Tema Oscuro</h3>
+                <p class="feature-description">Interfaz elegante con tema oscuro optimizada para largas sesiones de análisis financiero.</p>
+            </div>
+        </section>
+
+        <section class="demo-section">
+            <h2>Demostración en Vivo</h2>
+            <p>Prueba el dashboard directamente desde tu navegador:</p>
+            <div class="cta-buttons">
+                <a href="dashboard.html" class="btn btn-primary" target="_blank">
+                    🚀 Ver Demo en Vivo
+                </a>
+                <a href="https://github.com/tu-usuario/stock-financial-dashboard" class="btn btn-secondary" target="_blank">
+                    📂 Ver Código Fuente
+                </a>
+            </div>
+        </section>
+
+        <section>
+            <h2 style="text-align: center; margin-bottom: 2rem;">Instalación Local</h2>
+            <div class="code-snippet">
+                <code>
+# Clonar repositorio<br>
+git clone https://github.com/tu-usuario/stock-financial-dashboard.git<br>
+cd stock-financial-dashboard<br><br>
+
+# Instalar dependencias<br>
+pip install streamlit pandas plotly yfinance numpy<br><br>
+
+# Ejecutar aplicación<br>
+streamlit run app.py
+                </code>
+            </div>
+        </section>
+
+        <section>
+            <h2 style="text-align: center; margin-bottom: 2rem;">Tecnologías Utilizadas</h2>
+            <div class="tech-stack">
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">Streamlit</span>
+                <span class="tech-badge">Pandas</span>
+                <span class="tech-badge">Plotly</span>
+                <span class="tech-badge">Yahoo Finance API</span>
+                <span class="tech-badge">NumPy</span>
+            </div>
+        </section>
+
+        <section class="demo-section">
+            <h2>Ejemplos de Uso</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 2rem;">
+                <div style="text-align: left;">
+                    <h3 style="color: #00ff88; margin-bottom: 1rem;">Análisis de Acciones Populares</h3>
+                    <ul style="color: #cccccc; line-height: 1.8;">
+                        <li>AAPL - Apple Inc.</li>
+                        <li>GOOGL - Alphabet Inc.</li>
+                        <li>MSFT - Microsoft Corp.</li>
+                        <li>TSLA - Tesla Inc.</li>
+                        <li>AMZN - Amazon.com Inc.</li>
+                    </ul>
+                </div>
+                <div style="text-align: left;">
+                    <h3 style="color: #00ff88; margin-bottom: 1rem;">Métricas Disponibles</h3>
+                    <ul style="color: #cccccc; line-height: 1.8;">
+                        <li>Precio actual y variación</li>
+                        <li>Capitalización de mercado</li>
+                        <li>Ratio P/E y PEG</li>
+                        <li>Máximos y mínimos 52 semanas</li>
+                        <li>Volumen y beta</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2025 Stock Financial Dashboard. Desarrollado con ❤️ usando Streamlit y Python.</p>
+            <p>Los datos financieros son proporcionados por Yahoo Finance y son solo para fines informativos.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Animación suave para las tarjetas
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // El botón del demo ya está configurado para abrir dashboard.html directamente
+    </script>
+</body>
+</html>
