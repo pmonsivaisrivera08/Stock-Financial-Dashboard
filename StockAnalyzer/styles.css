@@ -1,0 +1,535 @@
+/* TradingView-style CSS for professional trading interface */
+:root {
+    --primary-blue: #2962ff;
+    --primary-red: #f7525f;
+    --bg-primary: #0d1017;
+    --bg-secondary: #161b22;
+    --bg-card: #1e222d;
+    --bg-card-hover: #2a2e39;
+    --border-color: #363a45;
+    --text-primary: #d1d4dc;
+    --text-secondary: #b7bdc6;
+    --text-muted: #8691a8;
+    --success-green: #00cc44;
+    --warning-yellow: #ffaa00;
+    --error-red: #ff4444;
+    --chart-orange: #ff9500;
+    --chart-purple: #9c27b0;
+    --chart-cyan: #00bcd4;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    display: grid;
+    grid-template-areas: 
+        "header header"
+        "sidebar main";
+    grid-template-columns: 320px 1fr;
+    grid-template-rows: auto 1fr;
+    min-height: 100vh;
+}
+
+.main-header {
+    grid-area: header;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.main-header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, var(--primary-blue), #1e4bff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background: var(--bg-card);
+    border-right: 1px solid var(--border-color);
+    padding: 2rem 1.5rem;
+    overflow-y: auto;
+}
+
+.sidebar h2 {
+    color: var(--primary-blue);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.input-group {
+    margin-bottom: 2rem;
+}
+
+.input-row {
+    display: flex;
+    gap: 0.5rem;
+}
+
+#stockSymbol {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+#stockSymbol:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 2px rgba(41, 98, 255, 0.2);
+}
+
+#searchBtn {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--primary-blue);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--primary-blue);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+}
+
+#searchBtn:hover {
+    background: var(--primary-blue);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(41, 98, 255, 0.4);
+}
+
+.popular-symbols {
+    margin-bottom: 2rem;
+}
+
+.symbol-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.symbol-btn {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.symbol-btn:hover {
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+}
+
+.time-period {
+    margin-bottom: 2rem;
+}
+
+#timePeriod {
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+}
+
+.spinner {
+    border: 3px solid var(--border-color);
+    border-top: 3px solid var(--primary-blue);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.stock-info {
+    background: var(--bg-card-hover);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    border: 1px solid var(--border-color);
+}
+
+#stockName {
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+.current-price {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.price-change {
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.price-change.positive {
+    color: var(--success-green);
+}
+
+.price-change.negative {
+    color: var(--error-red);
+}
+
+.stock-metrics {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.metric {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.metric:last-child {
+    border-bottom: none;
+}
+
+.label {
+    color: var(--text-secondary);
+}
+
+.main-content {
+    grid-area: main;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+.error-message {
+    background: rgba(255, 68, 68, 0.1);
+    border: 1px solid var(--error-red);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    color: var(--error-red);
+}
+
+.tabs {
+    display: flex;
+    gap: 2px;
+    background: var(--bg-card);
+    border-radius: 8px;
+    padding: 4px;
+    margin-bottom: 2rem;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.tab-btn.active,
+.tab-btn:hover {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.tab-content {
+    min-height: 600px;
+}
+
+.tab-panel {
+    display: none;
+}
+
+.tab-panel.active {
+    display: block;
+}
+
+.tab-panel h2 {
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+}
+
+.chart-controls {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.chart-controls label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.chart-container {
+    background: var(--bg-card);
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-color);
+}
+
+.metrics-table,
+.historical-table {
+    background: var(--bg-card);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.metrics-table table,
+.historical-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.metrics-table th,
+.metrics-table td,
+.historical-table th,
+.historical-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.metrics-table th,
+.historical-table th {
+    background: var(--bg-card-hover);
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.analysis-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.analysis-section {
+    background: var(--bg-card);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-color);
+}
+
+.analysis-section h3 {
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.export-options {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.export-btn {
+    padding: 1rem 2rem;
+    border: 1px solid var(--primary-blue);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--primary-blue);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.export-btn:hover {
+    background: var(--primary-blue);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(41, 98, 255, 0.4);
+}
+
+.export-status {
+    padding: 1rem;
+    border-radius: 6px;
+    margin-top: 1rem;
+}
+
+.export-status.success {
+    background: rgba(0, 204, 68, 0.1);
+    border: 1px solid var(--success-green);
+    color: var(--success-green);
+}
+
+.export-status.error {
+    background: rgba(255, 68, 68, 0.1);
+    border: 1px solid var(--error-red);
+    color: var(--error-red);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Status badges */
+.status-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+}
+
+.status-positive {
+    background-color: rgba(0, 204, 68, 0.15);
+    color: var(--success-green);
+    border: 1px solid rgba(0, 204, 68, 0.3);
+}
+
+.status-neutral {
+    background-color: rgba(255, 170, 0, 0.15);
+    color: var(--warning-yellow);
+    border: 1px solid rgba(255, 170, 0, 0.3);
+}
+
+.status-negative {
+    background-color: rgba(255, 68, 68, 0.15);
+    color: var(--error-red);
+    border: 1px solid rgba(255, 68, 68, 0.3);
+}
+
+/* Gauge styling */
+.gauge-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.gauge-info {
+    flex: 1;
+}
+
+.gauge-score {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+/* Progress bars */
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: var(--border-color);
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 5px;
+    transition: width 0.3s ease;
+}
+
+.progress-fill.health {
+    background: linear-gradient(90deg, var(--error-red), var(--warning-yellow), var(--success-green));
+}
+
+/* Sentiment indicators */
+.sentiment-indicators {
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem 0;
+}
+
+.sentiment-item {
+    text-align: center;
+    padding: 1rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.sentiment-item.active {
+    background: var(--bg-card-hover);
+    border: 1px solid var(--primary-blue);
+}
+
+.sentiment-item.active.bullish {
+    border-color: var(--success-green);
+    color: var(--success-green);
+}
+
+.sentiment-item.active.bearish {
+    border-color: var(--error-red);
+    color: var(--error-red);
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .container {
+        grid-template-areas: 
+            "header"
+            "sidebar"
+            "main";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto 1fr;
+    }
+    
+    .analysis-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-header h1 {
+        font-size: 2rem;
+    }
+    
+    .tabs {
+        flex-wrap: wrap;
+    }
+    
+    .export-options {
+        flex-direction: column;
+    }
+    
+    .symbol-buttons {
+        grid-template-columns: 1fr;
+    }
+}
